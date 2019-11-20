@@ -84,4 +84,3 @@ public void control(){
 		bob.setDirectionY((double)0);
 	}
 }
-
