@@ -3,6 +3,7 @@ int astNum = 15;
 Star[] stars = new Star[500];
 ArrayList <Asteroid> asteroids = new ArrayList <Asteroid>();
 boolean up,left,right,space;
+ArrayList <Bullet> bullets = new ArrayList <Bullet>();
 public void setup(){
   up = left = right = space = false;
   size(800,800);
@@ -22,12 +23,31 @@ public void draw(){
   }
   bob.move();
   bob.show();
-  for(int i = 0; i < astNum; i++){
+  for(int i = 0; i < asteroids.size(); i++){
   	asteroids.get(i).move();
   	asteroids.get(i).show();
+  	float d = dist(bob.getX(),bob.getY(),asteroids.get(i).getX(),asteroids.get(i).getY());
+
+		if(d < 25){
+			asteroids.remove(i);
+		}
   }
-  control(); 
+
+  for(int k = 0; k < bullets.size(); k++){
+		bullets.get(k).show();
+		bullets.get(k).move();
+		for(int m = 0; m < asteroids.size(); m++){
+	 		float dB = dist(bullets.get(k).getX(),bullets.get(k).getY(),asteroids.get(m).getX(),asteroids.get(m).getY());
+	 		if(dB < 25){
+	 			asteroids.remove(m);
+	 			bullets.remove(k);
+	 			break;
+	 		}
+	 	}
+	}
+    control(); 
 }
+
 
 public void keyPressed(){
 	if(keyCode == RIGHT){
@@ -49,6 +69,9 @@ public void keyPressed(){
 		// bob.setPointDirection((int)(Math.random()*360 + 1));
 		// bob.setDirectionX((double)0);
 		// bob.setDirectionY((double)0);
+	}
+	if(key == 'c'){
+		bullets.add(new Bullet());
 	}
 }
 
@@ -85,3 +108,5 @@ public void control(){
 		bob.setDirectionY((double)0);
 	}
 }
+
+
