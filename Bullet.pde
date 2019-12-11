@@ -11,6 +11,7 @@ class Bullet extends Floater{
 	public double getPointDirection() {return myPointDirection;}
 
 	private double dRadians;
+	private int col;
 
 	public Bullet(){
 		myCenterX = bob.getX(); 
@@ -21,11 +22,12 @@ class Bullet extends Floater{
 
 		myDirectionX = 5 * Math.cos(dRadians) + bob.getDirectionX();
 		myDirectionY = 5 * Math.sin(dRadians) + bob.getDirectionY();
+		col = color(random(0,255),random(0,255),random(0,255));
 	}
 
 	public void show(){
 		noStroke();
-		fill(255);
+		fill(col);
 		ellipse((float)myCenterX,(float)myCenterY,(float)6,(float)6);
 	}
 	public void move(){
