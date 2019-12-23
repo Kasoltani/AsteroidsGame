@@ -1,6 +1,6 @@
 Spaceship bob;
 int lives = 3;
-int astNum = 400;
+int astNum = 40;
 Star[] stars = new Star[500];
 ArrayList <Asteroid> asteroids = new ArrayList <Asteroid>();
 boolean up,left,right,space;
