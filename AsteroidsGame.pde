@@ -1,4 +1,5 @@
 Spaceship bob;
+int lives = 3;
 int astNum = 400;
 Star[] stars = new Star[500];
 ArrayList <Asteroid> asteroids = new ArrayList <Asteroid>();
@@ -30,7 +31,11 @@ public void draw(){
 
 		if(d < 25){
 			asteroids.remove(i);
+            lives -= 1;
 		}
+        if(lives == 0){
+            noLoop();
+        }
   }
 
   for(int k = 0; k < bullets.size(); k++){
@@ -108,5 +113,3 @@ public void control(){
 		bob.setDirectionY((double)0);
 	}
 }
-
-
