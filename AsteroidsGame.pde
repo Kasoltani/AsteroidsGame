@@ -1,5 +1,5 @@
 Spaceship bob;
-int astNum = 15;
+int astNum = 400;
 Star[] stars = new Star[500];
 ArrayList <Asteroid> asteroids = new ArrayList <Asteroid>();
 boolean up,left,right,space;
